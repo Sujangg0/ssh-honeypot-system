@@ -4,7 +4,7 @@ A dockerized SSH honeypot that captures attacker activity and visualizes it on a
 
 ## Blog Post
 
-*Coming soon*
+https://medium.com/@sulavgrg2/how-to-build-an-ssh-honeypot-with-cowrie-elasticsearch-and-kibana-8b13da50361b
 
 ## Stack
 
