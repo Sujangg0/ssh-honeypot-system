@@ -1,0 +1,27 @@
+filebeat.inputs:
+    - type: filestream
+      id: cowrie-json-logs
+      enabled: true
+      paths:
+        - /var/log/cowrie/cowrie.json
+      parsers:
+        - ndjson:
+            target: ""
+            overwrite_keys: true
+            add_error_key: true
+        
+output.elasticsearch:
+    hosts: ["http://elasticsearch:9200"]
+    index: "cowrie-logs-%{+yyy.MM.dd}"
+    pipeline: "cowrie-geoip-pipeline"
+    
+setup.kibana:
+    host: "http://kibana:5601"
+    
+setup.template.name: "cowrie-logs"
+setup.template.pattern: "cowrie-logs-*"
+    
+# Optional for debugging
+logging.level: info
+logging.to_files: false
+
